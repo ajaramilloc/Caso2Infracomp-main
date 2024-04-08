@@ -171,7 +171,7 @@ public class Calculator {
         }
     }
 
-    public static int searchPage(int numPage) {
+    public static synchronized int searchPage(int numPage) {
         for (int i = 0; i < realMemory.size(); i++){
             if (realMemory.get(i).getNumber() == numPage)
                 return i;
