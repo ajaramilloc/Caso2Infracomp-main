@@ -172,10 +172,15 @@ public class Calculator {
     }
 
     public static synchronized int searchPage(int numPage) {
-        for (int i = 0; i < realMemory.size(); i++){
-            if (realMemory.get(i).getNumber() == numPage)
-                return i;
+        lock.lock();
+        try {
+            for (int i = 0; i < realMemory.size(); i++){
+                if (realMemory.get(i).getNumber() == numPage)
+                    return i;
+            }
+            return -1;
+        } finally {
+            lock.unlock();
         }
-        return -1;
     }
 }
