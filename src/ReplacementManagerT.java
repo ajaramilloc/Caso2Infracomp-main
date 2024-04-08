@@ -8,7 +8,7 @@ public class ReplacementManagerT extends Thread{
                 e.printStackTrace();
             }
             try {
-                Thread.sleep(1);
+                Thread.sleep(4);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
