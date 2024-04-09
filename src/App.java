@@ -144,20 +144,20 @@ public class App {
 
     public static void main(String[] args) throws Exception { 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Menú de Opciones: ");
-            System.out.println("1. Generar Referencias");
-            System.out.println("2. Procesar Referencias");
-            System.out.println("Selecciona una opción: ");
+            System.out.println("Options: ");
+            System.out.println("1. Generate References");
+            System.out.println("2. Process References");
+            System.out.println("Select an option: ");
 
             int option = scanner.nextInt();
 
             switch (option) {
                 case 1:
-                    System.out.println("Ingresa el tamaño de las páginas: ");
+                    System.out.println("Enter the size of the pages: ");
                     int pageSize = scanner.nextInt();
-                    System.out.println("Ingresa el número de columnas: ");
+                    System.out.println("Enter the number of columns: ");
                     int nc = scanner.nextInt();
-                    System.out.println("Ingresa el número de filas: ");
+                    System.out.println("enter the number of rows: ");
                     int nf = scanner.nextInt();
 
                     ArrayList<List<Integer>[][]> matrices = referencesGenerator(pageSize, nc);
@@ -165,7 +165,7 @@ public class App {
                     List<Integer>[][] result = matrices.get(2);
                     List<Integer> maxPage = result[3][3];
 
-                    System.out.println("Ingresa el nombre del archivo sin la extensión: ");
+                    System.out.println("Enter the name of the file without the extension: ");
                     String archiveName = scanner.next();
 
                     writeToFile(references, nc, pageSize, maxPage.get(0), archiveName);
