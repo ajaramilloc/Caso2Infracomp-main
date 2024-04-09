@@ -3,13 +3,8 @@ public class ReplacementManagerT extends Thread{
         while (true) {
             try {
                 Calculator.NRU();
+                Thread.sleep(1);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            try {
-                Thread.sleep(4);
-            } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }

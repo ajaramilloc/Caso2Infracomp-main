@@ -58,20 +58,20 @@ public class App {
         return temp;
     }
 
-    public static ArrayList<String> fuckingProcess(int matrixSize, ArrayList<List<Integer>[][]> matrices) {
+    public static ArrayList<String> fuckingProcess(int numColumns, int numRows, ArrayList<List<Integer>[][]> matrices) {
 
         List<Integer>[][] filter = matrices.get(0);
         List<Integer>[][] data = matrices.get(1);
         List<Integer>[][] result = matrices.get(2);
 
         int[][] mat2 = new int[3][3];
-        int[][] mat1 = new int[matrixSize][matrixSize];
-        int[][] mat3 = new int[matrixSize][matrixSize];
+        int[][] mat1 = new int[numRows][numColumns];
+        int[][] mat3 = new int[numRows][numColumns];
 
         ArrayList<String> references = new ArrayList<>();
 
-        for (int i = 1; i < matrixSize - 1; i++){
-            for (int j = 1; j < matrixSize - 1; j++){
+        for (int i = 1; i < numRows - 1; i++){
+            for (int j = 1; j < numColumns - 1; j++){
                 int acum = 0;
                 for (int a = -1; a <= 1; a++){
                     for (int b = -1; b <= 1; b++){
@@ -95,18 +95,18 @@ public class App {
             }
         }
 
-        for (int i = 0; i < matrixSize; i++){
+        for (int i = 0; i < numColumns; i++){
             mat3[0][i] = 0;
             references.add("R["+0+"]["+i+"],"+result[0][i].get(0)+","+result[0][i].get(1)+",W");
-            mat3[matrixSize-1][i] = 255;
-            references.add("R["+(matrixSize-1)+"]["+i+"],"+result[matrixSize-1][i].get(0)+","+result[matrixSize-1][i].get(1)+",W");
+            mat3[numRows-1][i] = 255;
+            references.add("R["+(numRows-1)+"]["+i+"],"+result[numRows-1][i].get(0)+","+result[numRows-1][i].get(1)+",W");
         }
 
-        for (int i = 1; i < matrixSize - 1; i++){
+        for (int i = 1; i < numRows - 1; i++){
             mat3[i][0] = 0;
             references.add("R["+i+"]["+0+"],"+result[i][0].get(0)+","+result[i][0].get(1)+",W");
-            mat3[i][matrixSize-1] = 255;
-            references.add("R["+i+"]["+(matrixSize-1)+"],"+result[i][matrixSize-1].get(0)+","+result[i][matrixSize-1].get(1)+",W");
+            mat3[i][numColumns-1] = 255;
+            references.add("R["+i+"]["+(numColumns-1)+"],"+result[i][numColumns-1].get(0)+","+result[i][numColumns-1].get(1)+",W");
         }
 
         return references;
@@ -161,7 +161,7 @@ public class App {
                     int nf = scanner.nextInt();
 
                     ArrayList<List<Integer>[][]> matrices = referencesGenerator(pageSize, nc);
-                    ArrayList<String> references = fuckingProcess(nc, matrices);
+                    ArrayList<String> references = fuckingProcess(nc, nf, matrices);
                     List<Integer>[][] result = matrices.get(2);
                     List<Integer> maxPage = result[3][3];
 
